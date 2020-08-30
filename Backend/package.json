@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Api RESTful del Master en Frameworks para JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon in index.js",
+    "format": "prettier --write \"**/*.{js,jsx}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Albertopga/Master-en-Frameworks-librerias-JavaScript-Aprende-Angular-React-Vue-.git"
+  },
+  "author": "Alberto Perez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Albertopga/Master-en-Frameworks-librerias-JavaScript-Aprende-Angular-React-Vue-/issues"
+  },
+  "homepage": "https://github.com/Albertopga/Master-en-Frameworks-librerias-JavaScript-Aprende-Angular-React-Vue-#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-multiparty": "^2.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.2",
+    "prettier": "^2.1.1",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "prettier": "^1.16.1"
+  }
+}
