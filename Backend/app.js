@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // añadir prefijos a  rutas / cargar rutas
 
-// Ruta o metodo de prueba para Api rest
+// Ruta o método de prueba para Api rest
 app.get("/datos-curso", (req, res) => {
   return res.status(200).send({
     curso: "Master en framewors",
