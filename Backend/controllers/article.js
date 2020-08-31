@@ -71,6 +71,33 @@ const controller = {
       });
     }
   },
+
+  getArticles: (req, res) => {
+    // find para sacar datos de la bbdd
+    // podríamos pasar parámetros a find para filtra la búsqueda
+    Article.find()
+      .sort("-id") // ordena por id de manera descendente
+      .exec((err, articles) => {
+        if (err) {
+          return res.status(500).send({
+            status: "error",
+            message: "error al devolver los artículos!!",
+          });
+        }
+
+        if (!articles) {
+          return res.status(404).send({
+            status: "error",
+            message: "no se han encontrado artículos!!",
+          });
+        }
+
+        return res.status(200).send({
+          status: "success",
+          articles,
+        });
+      });
+  },
 }; // fin del controller
 
 module.exports = controller;
