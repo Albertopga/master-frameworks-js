@@ -1,14 +1,15 @@
 "use strict";
 
 const mongoose = require("mongoose");
-
-// activamos promesas de mongoose
-mongoose.Promise = global.Promise;
+const app = require("./app");
+const port = 3900;
 
 //deshabilita esta función
 mongoose.set("useFindAndModify", false);
+// activamos promesas de mongoose
+mongoose.Promise = global.Promise;
 
-//crear la conexion a mongodb por medio de una promesa
+//crear la conexión a mongodb por medio de una promesa
 const url = "mongodb://localhost:27017/api-rest-blog";
 const options = { useNewUrlParser: true };
 
@@ -18,4 +19,7 @@ mongoose.connect(url, options).then(() => {
   );
 
   // crear servidor y escuchar peticiones http
+  app.listen(port, () => {
+    console.log("Servidor corriendo en http://localhost:" + port);
+  });
 });
