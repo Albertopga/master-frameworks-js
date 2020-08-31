@@ -17,6 +17,12 @@ const controller = {
       message: "Soy la acción teste del controlador de artículos",
     });
   },
+
+  save: (req, res) => {
+    return res.status(200).send({
+      message: "Soy el mensaje de Save del controlador de artículos",
+    });
+  },
 }; // fin del controller
 
 module.exports = controller;
