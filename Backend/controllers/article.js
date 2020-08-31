@@ -6,6 +6,7 @@ const { param } = require("../routes/article");
 const article = require("../models/article");
 const fs = require("fs");
 const path = require("path");
+const { exists } = require("../models/article");
 
 const controller = {
   datosCurso: (req, res) => {
@@ -273,6 +274,24 @@ const controller = {
         }
       );
     }
+  },
+
+  getImage: (req, res) => {
+    // sacar fichero que nos llega por la url
+    const file = req.params.image;
+
+    // sacar el path completo
+    const path_file = "./upload/articles/" + file;
+    fs.exists(path_file, (exists) => {
+      if (exists) {
+        return res.sendFile(path.resolve(path_file));
+      } else {
+        return res.status(404).send({
+          status: "error",
+          message: "la imagen no existe",
+        });
+      }
+    });
   },
 }; // fin del controller
 
