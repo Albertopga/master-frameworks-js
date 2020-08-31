@@ -293,6 +293,42 @@ const controller = {
       }
     });
   },
+
+  searchArticle: (req, res) => {
+    // sacar string a buscar de la url
+    const sear_string = req.params.search;
+
+    // find or
+    Article.find({
+      $or: [
+        { title: { $regex: sear_string, $options: "i" } },
+        { content: { $regex: sear_string, $options: "i" } },
+      ],
+    })
+      .sort([["date", "descending"]])
+      .exec((err, articles) => {
+        if (err) {
+          return res.status(500).send({
+            status: "error",
+            message: "error en la petición",
+          });
+        }
+        if (!articles || articles.length == 0) {
+          return res.status(500).send({
+            status: "error",
+            message: "No se han encontrado artículos",
+          });
+        }
+        return res.status(200).send({
+          status: "success",
+          articles,
+        });
+      });
+  },
 }; // fin del controller
 
 module.exports = controller;
+
+// return res.status(404).send({
+//   message: "prufff",
+// });
