@@ -2,8 +2,11 @@
 
 const express = require("express");
 const ArticleController = require("../controllers/article");
-const { route } = require("../app");
 const router = express.Router();
+const multipart = require("connect-multiparty");
+
+// hace un paso intermedio para poder guardar los archivos y tratarlos
+const md_upload = multipart({ uploadDir: "./upload/articles" });
 
 // Rutas de prueba
 router.post("/test-curso", ArticleController.datosCurso);
@@ -15,5 +18,6 @@ router.get("/articles/:last?", ArticleController.getArticles);
 router.get("/article/:id", ArticleController.getArticle);
 router.put("/article/:id", ArticleController.updateArticle);
 router.delete("/article/:id", ArticleController.deleteArticle);
+router.post("/upload-image/:id", md_upload, ArticleController.uploadArticle);
 
 module.exports = router;

@@ -184,7 +184,7 @@ const controller = {
     } else {
       return res.status(500).send({
         status: "error",
-        message: "la validaciónn no es correcta!!",
+        message: "la validación no es correcta!!",
       });
     }
   },
@@ -213,6 +213,43 @@ const controller = {
         article: articleRemoved,
       });
     });
+  },
+
+  uploadArticle: (req, res) => {
+    // configurar el modulo connect multiparty en router/article.js
+
+    // recoger fichero de la petición
+    let file_name = "imagen no subida";
+
+    if (!req.files) {
+      return res.status(404).send({
+        status: "success",
+        message: file_name,
+      });
+    }
+    // conseguir el nombre de archivo
+    const file_path = req.files.file0.path;
+    file_name = file_path.split("\\")[2];
+
+    // conseguir la extensión y validar que es de fotos
+    const file_extension = file_name.split(".")[1].toLocaleLowerCase();
+    if (
+      file_extension !== "jpg" &&
+      file_extension !== "jpeg" &&
+      file_extension !== "png" &&
+      file_extension !== "bmp" &&
+      file_extension !== "gif"
+    ) {
+      // si no es valida la extensión, borrar el archivo
+    } else {
+      // si todo ok, Buscar el archivo, asignar el nombre de la imagen y actualizar el articulo
+
+      return res.status(200).send({
+        status: "success",
+        message: "ok",
+        file: req.files,
+      });
+    }
   },
 }; // fin del controller
 
