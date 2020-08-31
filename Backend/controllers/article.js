@@ -4,6 +4,8 @@ const validator = require("validator");
 const Article = require("../models/article");
 const { param } = require("../routes/article");
 const article = require("../models/article");
+const fs = require("fs");
+const path = require("path");
 
 const controller = {
   datosCurso: (req, res) => {
@@ -233,6 +235,7 @@ const controller = {
 
     // conseguir la extensión y validar que es de fotos
     const file_extension = file_name.split(".")[1].toLocaleLowerCase();
+
     if (
       file_extension !== "jpg" &&
       file_extension !== "jpeg" &&
@@ -241,14 +244,34 @@ const controller = {
       file_extension !== "gif"
     ) {
       // si no es valida la extensión, borrar el archivo
-    } else {
-      // si todo ok, Buscar el archivo, asignar el nombre de la imagen y actualizar el articulo
-
-      return res.status(200).send({
-        status: "success",
-        message: "ok",
-        file: req.files,
+      fs.unlink(file_path, (err) => {
+        return res.status(200).send({
+          status: "error",
+          message: "la extensión no es de imagen",
+        });
       });
+    } else {
+      // sacar id del artículo a buscar
+      const article_id = req.params.id;
+      // si todo ok, Buscar el archivo, asignar el nombre de la imagen y actualizar el articulo
+      Article.findOneAndUpdate(
+        { _id: article_id },
+        { image: file_name },
+        { new: true },
+        (err, articleUpdated) => {
+          if (err || !articleUpdated) {
+            return res.status(200).send({
+              status: "error",
+              message: "error al guardar la imagen de artículo",
+            });
+          }
+
+          return res.status(200).send({
+            status: "success",
+            article: articleUpdated,
+          });
+        }
+      );
     }
   },
 }; // fin del controller
