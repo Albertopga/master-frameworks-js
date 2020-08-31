@@ -73,9 +73,16 @@ const controller = {
   },
 
   getArticles: (req, res) => {
+    const query = Article.find({});
+    const last = req.params.last;
+
+    if (last || last != undefined) {
+      query.limit(5);
+    }
+
     // find para sacar datos de la bbdd
     // podríamos pasar parámetros a find para filtra la búsqueda
-    Article.find()
+    query
       .sort("-id") // ordena por id de manera descendente
       .exec((err, articles) => {
         if (err) {
