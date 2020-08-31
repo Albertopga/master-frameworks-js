@@ -188,6 +188,32 @@ const controller = {
       });
     }
   },
+
+  deleteArticle: (req, res) => {
+    // recoger id
+    const article_id = req.params.id;
+
+    // hacer find and delete
+    Article.findOneAndDelete({ _id: article_id }, (err, articleRemoved) => {
+      if (err) {
+        return res.status(500).send({
+          status: "error",
+          message: "error al borrar!!",
+        });
+      }
+      if (!articleRemoved) {
+        return res.status(404).send({
+          status: "error",
+          message: "articulo no borrado, puede que no exista!!",
+        });
+      }
+
+      return res.status(200).send({
+        status: "success",
+        article: articleRemoved,
+      });
+    });
+  },
 }; // fin del controller
 
 module.exports = controller;
