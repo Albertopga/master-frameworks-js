@@ -6,6 +6,7 @@ const { param } = require("../routes/article");
 const article = require("../models/article");
 const fs = require("fs");
 const path = require("path");
+const { exists } = require("../models/article");
 
 const controller = {
   datosCurso: (req, res) => {
@@ -274,6 +275,60 @@ const controller = {
       );
     }
   },
+
+  getImage: (req, res) => {
+    // sacar fichero que nos llega por la url
+    const file = req.params.image;
+
+    // sacar el path completo
+    const path_file = "./upload/articles/" + file;
+    fs.exists(path_file, (exists) => {
+      if (exists) {
+        return res.sendFile(path.resolve(path_file));
+      } else {
+        return res.status(404).send({
+          status: "error",
+          message: "la imagen no existe",
+        });
+      }
+    });
+  },
+
+  searchArticle: (req, res) => {
+    // sacar string a buscar de la url
+    const sear_string = req.params.search;
+
+    // find or
+    Article.find({
+      $or: [
+        { title: { $regex: sear_string, $options: "i" } },
+        { content: { $regex: sear_string, $options: "i" } },
+      ],
+    })
+      .sort([["date", "descending"]])
+      .exec((err, articles) => {
+        if (err) {
+          return res.status(500).send({
+            status: "error",
+            message: "error en la petición",
+          });
+        }
+        if (!articles || articles.length == 0) {
+          return res.status(500).send({
+            status: "error",
+            message: "No se han encontrado artículos",
+          });
+        }
+        return res.status(200).send({
+          status: "success",
+          articles,
+        });
+      });
+  },
 }; // fin del controller
 
 module.exports = controller;
+
+// return res.status(404).send({
+//   message: "prufff",
+// });
