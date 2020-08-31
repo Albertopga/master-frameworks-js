@@ -105,6 +105,33 @@ const controller = {
         });
       });
   },
+
+  getArticle: (req, res) => {
+    // recoger id de url
+    const article_id = req.params.id;
+
+    // validar que id existe
+    if (!article_id || article_id === null) {
+      return res.status(404).send({
+        status: "error",
+        message: "no id!!",
+      });
+    }
+    //buscar articulo
+    Article.findById(article_id, (err, article) => {
+      if (err || !article) {
+        return res.status(404).send({
+          status: "error",
+          message: "no existe el artículo!!",
+        });
+      }
+      // devolver articulo
+      return res.status(200).send({
+        status: "success",
+        article,
+      });
+    });
+  },
 }; // fin del controller
 
 module.exports = controller;
