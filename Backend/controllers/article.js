@@ -3,6 +3,7 @@
 const validator = require("validator");
 const Article = require("../models/article");
 const { param } = require("../routes/article");
+const article = require("../models/article");
 
 const controller = {
   datosCurso: (req, res) => {
@@ -131,6 +132,61 @@ const controller = {
         article,
       });
     });
+  },
+
+  updateArticle: (req, res) => {
+    let validate_title;
+    let validate_content;
+    // recoger id articulo por url
+    const article_id = req.params.id;
+
+    // recoger datos que llegan por put
+    const params = req.body;
+
+    // validar los datos
+    try {
+      validate_title = !validator.isEmpty(params.title);
+      validate_content = !validator.isEmpty(params.content);
+    } catch (error) {
+      return res.status(404).send({
+        status: "error",
+        message: "faltan datos por enviar!!",
+      });
+    }
+
+    if (validate_title && validate_content) {
+      // hacer la consulta y actualizar
+      Article.findByIdAndUpdate(
+        { _id: article_id },
+        params,
+        { new: true },
+        (err, articleUpdate) => {
+          if (err) {
+            return res.status(500).send({
+              status: "error",
+              message: "error al actualizar!!",
+            });
+          }
+
+          if (!articleUpdate) {
+            return res.status(404).send({
+              status: "error",
+              message: "no existe el articulo!!",
+            });
+          }
+
+          return res.status(200).send({
+            status: "success",
+            article: articleUpdate,
+          });
+        }
+      );
+    } else {
+      return res.status(500).send({
+        status: "error",
+        message: "la validaciónn no es correcta!!",
+      });
+    }
   },
 }; // fin del controller
 
