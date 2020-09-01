@@ -18,6 +18,8 @@ const appRoutes: Routes = [
     { path: 'peliculas', component: PeliculasComponent },
     { path: 'formulario', component: FormularioComponent },
     { path: 'pagina-de-pruebas', component: PaginaComponent },
+    // de este modo hago que el parametro sea opcional, puesto que hay dos definiciones de la ruta
+    { path: 'pagina-de-pruebas/:nombre/:apellido', component: PaginaComponent },
     { path: '**', component: ErrorComponent }
 
 ]
