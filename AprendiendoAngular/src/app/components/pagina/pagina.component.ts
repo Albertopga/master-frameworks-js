@@ -26,4 +26,12 @@ export class PaginaComponent implements OnInit {
     })
   }
 
+  redireccion() {
+    // con navigate redirecciona a la url indicada
+    this._router.navigate(['/formulario']);
+
+    // si lo hago de este modo le paso parametros a la url
+    this._router.navigate(['/pagina-de-pruebas', 'Alberto', 'Perez']);
+
+  }
 }
