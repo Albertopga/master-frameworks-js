@@ -4,27 +4,31 @@
         <div id="logo">
             <img src="../../../assets/images/angular-icon.svg" class="app-logo" alt="Logotipo" />
             <span id="brand">
-                <strong>Curso</strong>Angular
+                Curso<strong>Angular</strong>
             </span>
         </div>
 
         <!-- MENU -->
         <nav id="menu">
             <ul>
+                <!-- [routerLink]="['/home']" enlaza con la ruta indicada, 
+                    el nombre "home", es como lo hemos definido en app.routing -->
                 <li>
-                    <a href="index.html">Inicio</a>
+                    <a [routerLink]="['/home']" [routerLinkActive]="['active']">Inicio</a>
                 </li>
                 <li>
-                    <a href="blog.html">Blog</a>
+                    <!-- [routerLinkActive]="['active']" asigna la clase pasada "active" al elemento 
+                        cuando está activo -->
+                    <a [routerLink]="['/blog']" [routerLinkActive]="['active']">Blog</a>
                 </li>
                 <li>
-                    <a href="formulario.html">Formulario</a>
+                    <a [routerLink]="['/formulario']" [routerLinkActive]="['active']">Formulario</a>
                 </li>
                 <li>
-                    <a href="#">Pagina 1</a>
+                    <a [routerLink]="['/peliculas']" [routerLinkActive]="['active']">Peliculas</a>
                 </li>
                 <li>
-                    <a href="#">Pagina 2</a>
+                    <a [routerLink]="['/pagina-de-pruebas']" [routerLinkActive]="['active']">Pruebas</a>
                 </li>
             </ul>
         </nav>
