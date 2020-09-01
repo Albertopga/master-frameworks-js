@@ -50,13 +50,9 @@ body {
     }
 
     50% {
-        transform: scale(1.02, 1.02);
+        transform: scale(1.1, 1.1);
     }
-
-    55%{
-        transform: scale(0.95, 0.95);
-    }
-
+  
     100% {
         transform: scale(1, 1);
     }
