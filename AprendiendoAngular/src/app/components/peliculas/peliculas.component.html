@@ -1,3 +1,39 @@
-<h1 class="subheader">Películas</h1>
+<!--<h1 class="subheader">Películas</h1>
 <h2>{{titulo}}</h2>
 <button (click)="cambiarTitulo()">Pulsame</button>
+ <hr>
+<h2>Mostrar primera película</h2>
+{{peliculas[0].title}}
+<hr>
+
+<h2>Número de peliculas en array</h2>
+
+<div *ngIf="peliculas.length <= 3">
+    Hay pocas películas, solo son:
+</div>
+
+<div *ngIf="peliculas.length >= 3">
+    Hay varias películas, solo son:
+</div>
+{{peliculas.length}} -->
+
+<h1 class="subheader">Listado de películas</h1>
+
+<div id="articles" *ngIf='peliculas'>
+
+    <article class="article-item" *ngFor="let pelicula of peliculas; let i = index">
+        <div class="image-wrap">
+            <img src="{{pelicula.image}}" alt="{{pelicula.title}}" />
+        </div>
+
+        <h2>{{pelicula.title}}</h2>
+        <span class="date">
+            Hace 5 minutos
+        </span>
+        <a href="#">Leer más</a>
+
+        <div class="clearfix"></div>
+    </article>
+
+
+</div>
