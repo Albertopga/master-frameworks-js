@@ -15,11 +15,17 @@ export class MiComponente {
     public titulo: string;
     public comentario: string;
     public year: number;
+    public mostrarPeliculas: boolean
 
     constructor() {
         this.titulo = "Hola Soy Mi COMPONENTE";
         this.comentario = "Soy el primero que creas";
-        this.year = 2020
-        console.log(this.titulo, this.comentario, this.year)
+        this.year = 2020;
+        this.mostrarPeliculas = true;
+
+    }
+
+    ocultarPeliculas() {
+        this.mostrarPeliculas = !this.mostrarPeliculas;
     }
 }
