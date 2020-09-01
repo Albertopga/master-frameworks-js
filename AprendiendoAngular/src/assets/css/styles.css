@@ -96,6 +96,15 @@ body {
     color: #f13e3e!important;
 }
 
+.year-green{
+    background:green;
+
+}
+
+.year-red{
+    background:red;
+}
+
 #slider{
     width: 100%;
     height: 350px;
