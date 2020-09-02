@@ -6,8 +6,9 @@
             <h2 class="subheader">
                 Película favorita:
             </h2>
-            <h3>{{favorita.title}}</h3>
-            <h4>{{favorita.year}}</h4>
+            <h3>{{favorita.title | uppercase}}</h3>
+            <h4>{{favorita.year | espar}}</h4>
+            <h5>{{fecha | date: 'dd/MM/yyyy'}}</h5>
         </div>
         <!-- <h1 class="subheader">Listado de películas</h1> -->
 

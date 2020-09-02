@@ -10,6 +10,7 @@ export class PeliculasComponent implements OnInit {
   public titulo: string;
   public peliculas: Pelicula[]
   public favorita: Pelicula;
+  public fecha: any;
 
   /* no se debe meter lógica dentro del constructor, sólo usarlo para asignar 
   valor a las propiedades*/
@@ -20,6 +21,7 @@ export class PeliculasComponent implements OnInit {
       new Pelicula("IronMan", 2008, "https://blogdesuperheroes.es/Iron%20Man/BDS_IronMan_Definitivomini.jpg"),
       new Pelicula("Thor", 2009, "https://depor.com/resizer/Wbi-oZhBgGCuTLGvU9yWxi6P5w8=/640x0/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/RIWVELPLOZFTBLJBMLAS4TOJZE.jpg")
     ]
+    this.fecha = new Date(2020, 0, 12);
   }
 
   /*esto es un hook que se ejecuta cuando iniciamos nuestro componente, y lo hace después 
