@@ -9,7 +9,7 @@ import { Pelicula } from '../../models/pelicula';
 export class PeliculasComponent implements OnInit {
   public titulo: string;
   public peliculas: Pelicula[]
-
+  public favorita: Pelicula;
 
   /* no se debe meter lógica dentro del constructor, sólo usarlo para asignar 
   valor a las propiedades*/
@@ -38,5 +38,10 @@ export class PeliculasComponent implements OnInit {
   /*Avisa de que se va a destruir la instancia del componente */
   ngOnDestroy() {
     console.log('El componente se va a destruir')
+  }
+
+  mostrarFavorita(event) {
+    this.favorita = event.pelicula;
+    console.log(this.favorita)
   }
 }
