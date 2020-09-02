@@ -1,4 +1,5 @@
 import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
+import { Pelicula } from '../../models/pelicula';
 
 @Component({
   selector: 'app-peliculas',
@@ -7,7 +8,7 @@ import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 })
 export class PeliculasComponent implements OnInit {
   public titulo: string;
-  public peliculas: Array<any>;
+  public peliculas: Pelicula[]
 
 
   /* no se debe meter lógica dentro del constructor, sólo usarlo para asignar 
@@ -15,10 +16,9 @@ export class PeliculasComponent implements OnInit {
   constructor() {
     this.titulo = "Componente películas"
     this.peliculas = [
-      { year: 2019, title: "SpiderMan", image: "https://as01.epimg.net/meristation/imagenes/2019/09/27/noticias/1569603388_605931_1569603425_noticia_normal.jpg" },
-      { year: 2018, title: "Vengadores", image: "https://as01.epimg.net/tikitakas/imagenes/2019/04/26/portada/1556258369_131914_1556258703_noticia_normal.jpg" },
-      { year: 2008, title: "IronMan", image: "https://blogdesuperheroes.es/Iron%20Man/BDS_IronMan_Definitivomini.jpg" },
-      { year: 2009, title: "Thor", image: "https://depor.com/resizer/Wbi-oZhBgGCuTLGvU9yWxi6P5w8=/640x0/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/RIWVELPLOZFTBLJBMLAS4TOJZE.jpg" }
+      new Pelicula("SpiderMan", 2019, "https://as01.epimg.net/meristation/imagenes/2019/09/27/noticias/1569603388_605931_1569603425_noticia_normal.jpg"),
+      new Pelicula("IronMan", 2008, "https://blogdesuperheroes.es/Iron%20Man/BDS_IronMan_Definitivomini.jpg"),
+      new Pelicula("Thor", 2009, "https://depor.com/resizer/Wbi-oZhBgGCuTLGvU9yWxi6P5w8=/640x0/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/RIWVELPLOZFTBLJBMLAS4TOJZE.jpg")
     ]
   }
 

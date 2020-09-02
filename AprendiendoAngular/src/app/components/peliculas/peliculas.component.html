@@ -1,53 +1,41 @@
-<!--<h1 class="subheader">Películas</h1>
-<h2>{{titulo}}</h2>
-<button (click)="cambiarTitulo()">Pulsame</button>
- <hr>
-<h2>Mostrar primera película</h2>
-{{peliculas[0].title}}
-<hr>
+<app-slider [nombre]="'Películas'" [size]="'small'"></app-slider>
 
-<h2>Número de peliculas en array</h2>
+<div class="center">
+    <section id="content">
+        <h1 class="subheader">Listado de películas</h1>
 
-<div *ngIf="peliculas.length <= 3">
-    Hay pocas películas, solo son:
-</div>
+        <div id="articles" *ngIf='peliculas'>
+            <!-- en ngFor podemos sacar el indice si lo almacenamos en una variable -->
+            <article class="article-item" *ngFor="let pelicula of peliculas; let i = index">
+                <div class="image-wrap">
+                    <img src="{{pelicula.image}}" alt="{{pelicula.title}}" />
+                </div>
 
-<div *ngIf="peliculas.length >= 3">
-    Hay varias películas, solo son:
-</div>
-{{peliculas.length}} -->
+                <h2>{{pelicula.title}}</h2>
+                <!-- en caso de que el año sea mayor que 2016, el año tendrá un color verde y si es menor rojo 
+                    esto lo vamos a lograr con la directiva ngStyle, que usamos: 
+                    [style.atributo_a_modificar] ="condición a cumplir o directamente el valor"-->
+                <!-- <span class="year" [style.background]="pelicula.year > 2016 ? 'green' : 'red'"> -->
 
-<h1 class="subheader">Listado de películas</h1>
-
-<div id="articles" *ngIf='peliculas'>
-    <!-- en ngFor podemos sacar el indice si lo almacenamos en una variable -->
-    <article class="article-item" *ngFor="let pelicula of peliculas; let i = index">
-        <div class="image-wrap">
-            <img src="{{pelicula.image}}" alt="{{pelicula.title}}" />
-        </div>
-
-        <h2>{{pelicula.title}}</h2>
-        <!-- en caso de que el año sea mayor que 2016, el año tendrá un color verde y si es menor rojo 
-            esto lo vamos a lograr con la directiva ngStyle, que usamos: 
-            [style.atributo_a_modificar] ="condición a cumplir o directamente el valor"-->
-        <!-- <span class="year" [style.background]="pelicula.year > 2016 ? 'green' : 'red'"> -->
-
-        <!-- se puede aplicar una clase por medio de la directiva ngClass que es similar a ngStyle
+                <!-- se puede aplicar una clase por medio de la directiva ngClass que es similar a ngStyle
             [class.clase_a_asignar] = "condición a cumplir o directamente el valor" 
         [class.year-green]="pelicula.year > 2016" [class.year-red]="pelicula.year < 2016"
 
         esta etiqueta se puede usar también [ngClass]=objeto con la clase a aplicar y las condiciones -->
-        <span class="year" [ngClass]="{
+                <span class="year" [ngClass]="{
                 'year-green': pelicula.year >= 2016, 
                 'year-red': pelicula.year < 2016
                 }">
-            {{pelicula.year}}
-        </span>
+                    {{pelicula.year}}
+                </span>
 
-        <a href="#">Leer más</a>
+                <a href="#">Leer más</a>
 
-        <div class="clearfix"></div>
-    </article>
+                <div class="clearfix"></div>
+            </article>
 
 
+        </div>
+    </section>
+    <app-sidebar></app-sidebar>
 </div>
