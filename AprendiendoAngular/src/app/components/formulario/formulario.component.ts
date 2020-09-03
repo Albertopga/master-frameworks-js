@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
   public user: any;
+  public campo: string;
+
   constructor() {
     // datos a recoger del formulario
     this.user = {
@@ -15,6 +17,7 @@ export class FormularioComponent implements OnInit {
       bio: "",
       genero: ""
     }
+
   }
 
   ngOnInit(): void {
@@ -22,5 +25,19 @@ export class FormularioComponent implements OnInit {
 
   onSubmit() {
     console.log(this.user)
+  }
+
+  hasDadoClick() {
+    alert("has dado click")
+  }
+
+  hasSalido() {
+    console.log("has salido")
+
+  }
+
+  hasPulsadoEnter() {
+    alert("has pulsado enter")
+
   }
 }
