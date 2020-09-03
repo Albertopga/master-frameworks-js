@@ -1,0 +1,39 @@
+<header id="header">
+    <div class="center">
+        <!-- LOGO -->
+        <div id="logo">
+            <img src="../../../assets/images/angular-icon.svg" class="app-logo" alt="Logotipo" />
+            <span id="brand">
+                Curso<strong>Angular</strong>
+            </span>
+        </div>
+
+        <!-- MENU -->
+        <nav id="menu">
+            <ul>
+                <!-- [routerLink]="['/home']" enlaza con la ruta indicada, 
+                    el nombre "home", es como lo hemos definido en app.routing -->
+                <li>
+                    <a [routerLink]="['/home']" [routerLinkActive]="['active']">Inicio</a>
+                </li>
+                <li>
+                    <!-- [routerLinkActive]="['active']" asigna la clase pasada "active" al elemento 
+                        cuando está activo -->
+                    <a [routerLink]="['/blog']" [routerLinkActive]="['active']">Blog</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/formulario']" [routerLinkActive]="['active']">Formulario</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/peliculas']" [routerLinkActive]="['active']">Peliculas</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/pagina-de-pruebas']" [routerLinkActive]="['active']">Pruebas</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!--LIMPIAR FLOTADOS-->
+        <div class="clearfix"></div>
+    </div>
+</header>
