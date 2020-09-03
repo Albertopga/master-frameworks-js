@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { appRoutingProviders, routing } from './app.routing'
+import { appRoutingProviders, routing } from './app.routing';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { MiComponente } from './components/mi-componente/mi-componente.component';
@@ -20,6 +21,7 @@ import { EsParPipe } from './pipes/espar.pipe'
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { ArticlesComponent } from './components/articles/articles.component'
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { ArticlesComponent } from './components/articles/articles.component'
     BrowserModule,
     routing, // añado las rutas generadas en app.routing
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MomentModule
   ],
   providers: [appRoutingProviders], // cargo el servicio creado en app.routing
   bootstrap: [AppComponent]

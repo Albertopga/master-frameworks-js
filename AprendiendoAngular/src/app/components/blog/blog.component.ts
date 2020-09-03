@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit {
   constructor(private _articleService: ArticleService) { }
 
   ngOnInit(): void {
-    //this.url = Global.url
+
     this._articleService.getArticles().subscribe(
       response => {
         if (response.articles) {

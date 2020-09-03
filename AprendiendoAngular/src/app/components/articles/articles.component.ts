@@ -9,10 +9,9 @@ import { Global } from 'src/app/services/global';
 })
 
 export class ArticlesComponent implements OnInit {
+
   url: string;
-
   @Input() articles: Article[];
-
 
   constructor() {
     this.url = Global.url;
