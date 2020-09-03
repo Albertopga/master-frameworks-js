@@ -16,7 +16,7 @@
             {{objArticle.date | amLocale: 'es' | amTimeAgo}}
 
         </span>
-        <a href="#">Leer más</a>
+        <a [routerLink]="['/blog/articulo', objArticle._id]">Leer más</a>
 
         <div class="clearfix"></div>
     </article>

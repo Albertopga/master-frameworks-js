@@ -20,7 +20,8 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { EsParPipe } from './pipes/espar.pipe'
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
-import { ArticlesComponent } from './components/articles/articles.component'
+import { ArticlesComponent } from './components/articles/articles.component';
+import { ArticleComponent } from './components/article/article.component'
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ArticlesComponent } from './components/articles/articles.component'
     ErrorComponent,
     PeliculaComponent,
     EsParPipe,
-    ArticlesComponent
+    ArticlesComponent,
+    ArticleComponent
 
   ],
   imports: [
