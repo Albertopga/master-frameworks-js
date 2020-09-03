@@ -17,6 +17,7 @@ import { PaginaComponent } from './components/pagina/pagina.component';
 import { ErrorComponent } from './components/error/error.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { EsParPipe } from './pipes/espar.pipe'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -35,10 +36,12 @@ import { EsParPipe } from './pipes/espar.pipe'
     ErrorComponent,
     PeliculaComponent,
     EsParPipe
+
   ],
   imports: [
     BrowserModule,
-    routing // añado las rutas generadas en app.routing
+    routing, // añado las rutas generadas en app.routing
+    FormsModule
   ],
   providers: [appRoutingProviders], // cargo el servicio creado en app.routing
   bootstrap: [AppComponent]
