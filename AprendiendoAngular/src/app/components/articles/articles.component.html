@@ -1,0 +1,24 @@
+<div class="loading" *ngIf="!articles">
+    <h1>Cargando...</h1>
+</div>
+<div id="articles" *ngIf="articles">
+    <article class="article-item" *ngFor="let objArticle of articles">
+
+        <div class="image-wrap">
+            <img src="{{url+ 'get-image/'+ objArticle.image}}" alt="{{objArticle.title}}" *ngIf="objArticle.image" />
+            <img src="../../../assets/images/default-image.jpg" alt="{{objArticle.title}}" *ngIf="!objArticle.image" />
+        </div>
+
+        <h2>{{objArticle.title}}</h2>
+        <span class="date">
+            <!-- usamos los pipes amLocale: 'es' para establecer el formato de fecha español 
+            y amTimeAgo para que calcule cuanto tiempo ha pasado desde esa fecha hasta hoy-->
+            {{objArticle.date | amLocale: 'es' | amTimeAgo}}
+
+        </span>
+        <a [routerLink]="['/blog/articulo', objArticle._id]">Leer más</a>
+
+        <div class="clearfix"></div>
+    </article>
+
+</div>
