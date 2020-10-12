@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Pelicula from "./Pelicula";
+import Slider from "./Slider";
+import Sidebar from "./Sidebar";
 
 export default function Peliculas() {
   const peliculasIniciales = [
@@ -22,59 +24,48 @@ export default function Peliculas() {
   const [peliculas, setPeliculas] = useState(peliculasIniciales);
   const [favorita, setFavorita] = useState({});
 
-  const cambiarTitulo = () => {
-    let pelistemp = [...peliculas];
-    pelistemp[0] = { ...pelistemp[0], titulo: "Jairo mano" };
-    // pelistemp[0] = { titulo:"titulo por defecto", ...pelistemp[0]  } se utilizaría para establecer parametros por defecto y añadir los que ya tengo dentro de pelistemp[0]
-    setPeliculas(pelistemp);
-  };
+  // const cambiarTitulo = () => {
+  //   let pelistemp = [...peliculas];
+  //   pelistemp[0] = { ...pelistemp[0], titulo: "Jairo mano" };
+  //   // pelistemp[0] = { titulo:"titulo por defecto", ...pelistemp[0]  } se utilizaría para establecer parametros por defecto y añadir los que ya tengo dentro de pelistemp[0]
+  //   setPeliculas(pelistemp);
+  // };
 
   const marcarFavorita = (peli) => {
     setFavorita(peli);
   };
 
   return (
-    <div id="content" className="peliculas">
-      <h2 className="subheader">Películas</h2>
-      <p>Selección de películas favoritas</p>
-      <p>
-        <button onClick={cambiarTitulo}>Cambiar Titulo</button>{" "}
-      </p>
-      {/*Condicional simple*/}
-      {/*{favorita.titulo && (*/}
-      {/*  <p className="favorita">*/}
-      {/*    <strong>*/}
-      {/*      La película favorita es*/}
-      {/*      <span>{favorita.titulo}</span>*/}
-      {/*    </strong>*/}
-      {/*  </p>*/}
-      {/*)}*/}
-
-      {/*Condicional if else con estructura ternaria*/}
-      {favorita.titulo ? (
-        <p className="favorita">
-          <strong>
-            La película favorita es
-            <span>{favorita.titulo}</span>
-          </strong>
-        </p>
-      ) : (
-        <p>NO HAY PELICULAS FAVORITAS </p>
-      )}
-
-      <div id="articles" className="peliculas">
-        <>
-          {peliculas.map((pelicula, index) => {
-            return (
-              <Pelicula
-                key={index}
-                titulo={pelicula.titulo}
-                imagen={pelicula.imagen}
-                marcarFavorita={marcarFavorita}
-              />
-            );
-          })}
-        </>
+    <div id="peliculas">
+      <Slider title="Bienvenido a películas" />
+      <div className="center">
+        <div id="content">
+          <h2 className="subheader">Listado de películas</h2>
+          <p>Selección de películas favoritas</p>
+          {favorita.titulo && (
+            <p className="favorita">
+              <strong>
+                La película favorita es
+                <span>{" " + favorita.titulo}</span>
+              </strong>
+            </p>
+          )}
+          <div id="articles" className="peliculas">
+            <>
+              {peliculas.map((pelicula, index) => {
+                return (
+                  <Pelicula
+                    key={index}
+                    titulo={pelicula.titulo}
+                    imagen={pelicula.imagen}
+                    marcarFavorita={marcarFavorita}
+                  />
+                );
+              })}
+            </>
+          </div>
+        </div>
+        <Sidebar />
       </div>
     </div>
   );
