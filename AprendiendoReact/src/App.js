@@ -5,6 +5,7 @@ import Slider from "./components/Slider";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Peliculas from "./components/Peliculas";
+import Router from "./components/Router";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Header />
       <Slider />
       <div className="center">
-        <Peliculas />
+        <Router />
+
         <Sidebar />
       </div>
       <div className="clearfix" />
