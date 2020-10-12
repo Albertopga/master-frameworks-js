@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "../assets/images/logo.svg";
+import { NavLink } from "react-router-dom";
 
-export default function Header() {
+const Header = () => {
   return (
     <header id="header">
       <div className="center">
@@ -15,19 +16,18 @@ export default function Header() {
         <nav id="menu">
           <ul>
             <li>
-              <a href="index.html">Inicio</a>
+              <NavLink to="/home" activeClassName="active">
+                Inicio
+              </NavLink>
             </li>
             <li>
-              <a href="blog.html">Blog</a>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
             <li>
-              <a href="formulario.html">Formulario</a>
+              <NavLink to="/formulario">Formulario</NavLink>
             </li>
             <li>
-              <a href="#">Pagina 1</a>
-            </li>
-            <li>
-              <a href="#">Pagina 2</a>
+              <NavLink to="/peliculas">Películas</NavLink>
             </li>
           </ul>
         </nav>
@@ -35,4 +35,5 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+export default Header;

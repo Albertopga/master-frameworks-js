@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-export default function Slider() {
+const Slider = (props) => {
+  const { title, textButton, navTo } = props;
+  let size = !navTo ? "slider-small" : "slider-big";
+
   return (
-    <div id="slider" className="slider-big">
-      <h1>Bienvenido al Curso de React</h1>
-      <a href="#" className="btn-white">
-        Ir al blog
-      </a>
+    <div id="slider" className={size}>
+      <h1>{title}</h1>
+      {textButton && navTo && (
+        <NavLink to={navTo} className="btn-white">
+          {textButton}
+        </NavLink>
+      )}
     </div>
   );
-}
+};
+
+export default Slider;
