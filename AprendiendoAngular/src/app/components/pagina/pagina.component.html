@@ -1,0 +1,27 @@
+<app-slider [nombre]="'Página'" [size]="'small'"></app-slider>
+
+<div class="center">
+    <section id="content">
+
+        <h1 class="subheader">Página de pruebas</h1>
+
+        <!-- si queremos hacer un else para cuando no se cumpla la condición, 
+    debemos poner ; else y pasarle un template para mostrar
+podemos poner un then para cuando se cumpla la condición y de este modo queda más legible-->
+        <div *ngIf="nombre && apellido; then conParams else noParams"></div>
+
+        <button (click)="redireccion()">pon nombre y apellido</button>
+
+        <!-- con # asignamos un nombre  -->
+        <ng-template #noParams>
+            <h2>No hay parámetros</h2>
+        </ng-template>
+
+        <ng-template #conParams>
+            <h2>Nombre {{nombre}}</h2>
+            <h2>Apellido {{apellido}}</h2>
+        </ng-template>
+
+    </section>
+    <app-sidebar></app-sidebar>
+</div>
