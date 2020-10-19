@@ -21,7 +21,7 @@ export default function Peliculas() {
         "https://www.cinemascomics.com/wp-content/uploads/2017/06/poster-spider-man-homecoming-espana.jpg",
     },
   ];
-  const [peliculas, setPeliculas] = useState(peliculasIniciales);
+  const [peliculas] = useState(peliculasIniciales);
   const [favorita, setFavorita] = useState({});
 
   // const cambiarTitulo = () => {

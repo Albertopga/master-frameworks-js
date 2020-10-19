@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar";
 
 const Formulario = () => {
   let genero;
@@ -74,7 +74,6 @@ const Formulario = () => {
                 name="genero"
                 value="hombre"
                 ref={hombreRef}
-                checked="true"
               />{" "}
               Hombre
               <input

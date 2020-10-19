@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Pelicula = ({ titulo, imagen, marcarFavorita }) => {
   const marcar = () => {
@@ -13,7 +14,7 @@ const Pelicula = ({ titulo, imagen, marcarFavorita }) => {
 
       <h2>{titulo}</h2>
       <span className="date">Hace 5 minutos</span>
-      <a href="#">Leer más</a>
+      <Link to="#">Leer más</Link>
       <button onClick={marcar}>Marcar Como favorita</button>
       <div className="clearfix"></div>
     </article>
