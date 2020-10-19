@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useForceUpdate from "use-force-update";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import SimpleReactValidator from "simple-react-validator";
@@ -13,7 +12,6 @@ const EditArticle = (props) => {
   const id = idProp?.toString() ?? null;
   const [article, setArticle] = useState({});
   const [status, setStatus] = useState({});
-  const [loaded, setLoaded] = useState();
   const url = Global.url;
   const titleRef = React.createRef();
   const contentRef = React.createRef();

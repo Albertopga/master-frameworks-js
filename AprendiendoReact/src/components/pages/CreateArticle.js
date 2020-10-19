@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import useForceUpdate from "use-force-update";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import SimpleReactValidator from "simple-react-validator";
@@ -21,7 +20,6 @@ const CreateArticle = () => {
       alpha_num_space: "Sólo letras, números y espacios",
     },
   });
-  const forceUpdate = useForceUpdate();
 
   const saveArticle = (event) => {
     event.preventDefault();

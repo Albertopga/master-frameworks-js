@@ -212,6 +212,7 @@ body {
   color: #f7f7f7 !important;
   float:left;
   margin-left: 15px;
+  height: 49px;
 }
 
 .btn-warning{
@@ -324,7 +325,7 @@ textarea{
   display: block;
   color: #444;
   text-decoration: none;
-  margin-top: 10px;
+  
 }
 
 .article-item a:hover{

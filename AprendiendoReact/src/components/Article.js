@@ -11,20 +11,20 @@ const Article = (props) => {
   const url = Global.url;
   const [article, setArticle] = useState();
   const [status, setStatus] = useState();
+  const id = props.match.params.id;
 
   useEffect(() => {
-    getArticle(props);
+    getArticle();
   }, []);
 
-  const getArticle = (props) => {
-    const id = props.match.params.id;
+  const getArticle = () => {
     axios.get(url + "article/" + id).then((res) => {
       setStatus(res.data.status);
       setArticle(res.data.article);
     });
   };
 
-  const deleteArticle = (id) => {
+  const deleteArticle = () => {
     swal({
       title: "Borrar artículo",
       text: "¿Seguro que desea borrar el arículo?",
@@ -49,7 +49,7 @@ const Article = (props) => {
         {article ? (
           <article className="article-item article-detail">
             <div className="image-wrap">
-              {article.image != null ? (
+              {article.image !== null ? (
                 <img
                   src={url + "get-image/" + article.image}
                   alt={article.title}
@@ -79,7 +79,7 @@ const Article = (props) => {
             >
               Editar
             </Link>
-            <div className="clearfix"></div>
+            <div className="clearfix" />
           </article>
         ) : (
           <h1>Artículo no encontrado</h1>
